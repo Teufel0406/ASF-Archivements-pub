@@ -3,8 +3,7 @@
 ASF-Plugin zum **automatischen Freischalten fehlender Steam-Achievements** für ausgewählte Bots. Releases und Auto-Updates werden über dieses Repository bereitgestellt; der Quellcode wird separat gepflegt.
 
 **Aktuelle Version:** [1.0.4.0](https://github.com/Teufel0406/ASF-Archivements-pub/releases/tag/1.0.4.0)  
-**ASF:** 6.3.x mit **.NET 10** (passend zur mitgelieferten `ArchiSteamFarm.dll` des Hosts)
-
+**ASF:** 6.3.x mit **.NET 10**
 ---
 
 ## Funktionen
@@ -116,15 +115,6 @@ Manuell auslösen: `!update` oder ASF-Neustart.
 | Viele `ClientGetUserStats` / `Fail` | Normal bei Spielen **ohne** User-Stats — werden gecacht |
 | `ClientStoreUserStats` schlägt fehl | Spiel-spezifische Steam-Limits; Plugin überspringt die AppID bis zum ASF-Neustart |
 | `WebProxy` / HTTP-Fehler im ASF-Log | Meist ASF, Proxy oder **andere** Plugins — nicht dieses Achievement-Plugin |
-
----
-
-## Repository-Hinweis
-
-| Repository | Inhalt |
-|------------|--------|
-| **ASF-Archivements-pub** (dieses Repo) | Öffentliche **Releases** + Auto-Update-Ziel |
-| [ASF-Archivements](https://github.com/Teufel0406/ASF-Archivements) | Privater Quellcode, Entwicklung und Issues (Zugang nach Absprache) |
 
 ---
 
