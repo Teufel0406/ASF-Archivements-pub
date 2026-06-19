@@ -1,8 +1,8 @@
 # Achievement Automator Plugin for ASF
 
-**Version:** `1.1.9.0` · Benötigt [.NET 10](https://dotnet.microsoft.com/) und eine aktuelle [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm)-Installation
+**Version:** `1.1.9.0` * Benötigt [.NET 10](https://dotnet.microsoft.com/) und eine aktuelle [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm)-Installation
 
-Achievement Automator ist ein Plugin für [ArchiSteamFarm (ASF)](https://github.com/JustArchiNET/ArchiSteamFarm). Es prüft die Steam-Bibliothek konfigurierter Bots und schaltet fehlende Achievements automatisch frei — mit Drosselung und Limits, damit Steam-Anfragen im Rahmen bleiben.
+Achievement Automator ist ein Plugin für [ArchiSteamFarm (ASF)](https://github.com/JustArchiNET/ArchiSteamFarm). Es prüft die Steam-Bibliothek konfigurierter Bots und schaltet fehlende Achievements automatisch frei - mit Drosselung und Limits, damit Steam-Anfragen im Rahmen bleiben.
 
 **Releases & Updates:** [Teufel0406/ASF-Archivements-pub](https://github.com/Teufel0406/ASF-Archivements-pub)
 
@@ -16,15 +16,15 @@ Achievement Automator ist ein Plugin für [ArchiSteamFarm (ASF)](https://github.
 
 ## Installation
 
-### Variante A — Release (empfohlen)
+### Variante A - Release (empfohlen)
 
 1. Neuestes Release auf [ASF-Archivements-pub](https://github.com/Teufel0406/ASF-Archivements-pub/releases) öffnen
 2. **`AchievementAutomator.zip`** herunterladen
-3. ZIP entpacken — die Datei `AchievementAutomator.dll` (und ggf. `AchievementAutomator.deps.json`) in einen Ordner `plugins/AchievementAutomator/` im ASF-Verzeichnis legen
+3. ZIP entpacken - die Datei `AchievementAutomator.dll` (und ggf. `AchievementAutomator.deps.json`) in einen Ordner `plugins/AchievementAutomator/` im ASF-Verzeichnis legen
 4. ASF neu starten
 5. Beim ersten Start legt das Plugin `config/AchievementAutomator.config` an (JSON-Inhalt)
 
-### Variante B — Manuelles Kopieren
+### Variante B - Manuelles Kopieren
 
 1. Ordner `plugins/AchievementAutomator/` im ASF-Verzeichnis anlegen
 2. `AchievementAutomator.dll` aus dem Release dort ablegen
@@ -83,16 +83,16 @@ Alle Befehle über ASF-Konsole, IPC oder Steam-Chat (in der Regel **Master**-Ber
 | Befehl | Beschreibung |
 |--------|----------------|
 | `!achieve [BotNames]` (`!aa`) | Farming für Bots **umschalten** (an/aus). Mehrere Bots: gruppierte Antwort (Enabled/Disabled/Failed) |
-| `!achieve enable/disable/on/off/start/stop [BotNames]` | Explizit an oder aus. **Ohne Namen:** aktueller Bot |
-| `!achieve status [BotNames]` (`!aastatus`) | Aktivierte Bots, Rate-Limit, Status-Indikatoren |
+| `!achieve enable/disable/on/off/start/stop [BotNames]` (`!aaenable`, `!aadisable`, `!aaon`, `!aaoff`, `!aastart`, `!aastop`) | Explizit an oder aus. **Ohne Namen:** aktueller Bot |
+| `!achieve status/info [BotNames]` (`!aastatus`, `!aainfo`) | Aktivierte Bots, Rate-Limit, Status-Indikatoren |
 | `!achieve stats [BotNames]` (`!aastats`) | Session-Statistik (abgeschlossen/fehlgeschlagen) |
-| `!achieve app <AppID> [BotNames]` (`!aaapp`) | Status einer AppID (Caches) |
+| `!achieve app/apps <AppID> [BotNames]` (`!aaapp`, `!aaapps`) | Status einer AppID (Caches) |
 | `!achieve reset <Bots>\|all\|global\|app <AppID> [Bots]` (`!aareset`) | Session- oder Skip-Caches zurücksetzen |
 | `!achieve reload` (`!aareload`) | Konfiguration von der Festplatte neu laden (**Owner**) |
-| `!achieve interval [Minuten]` (`!aainterval`) | Farming-Intervall anzeigen oder setzen (1–1440) |
+| `!achieve interval [Minuten]` (`!aainterval`) | Farming-Intervall anzeigen oder setzen (1-1440) |
 | `!achieve version` (`!aaversion`) | Installierte Plugin-Version |
 | `!achieve help` (`!aahelp`) | Kurzübersicht aller Befehle |
-| `!achievetest [Bot]` (`!achieve test`, `!aatest`) | Selbsttest — siehe unten |
+| `!achievetest [Bot]` (`!achieve test`, `!aatest`) | Selbsttest - siehe unten |
 
 ### Selbsttest (`!achievetest`)
 
@@ -119,22 +119,45 @@ Technische Obergrenzen (Auszug):
 | Bereich | Limit |
 |---------|--------|
 | Aktivierte Bots in Config | 500 |
+| BotName-Länge | 64 |
 | Config-Dateigröße | 1 MB |
+| Schema-Dateigröße (Cache) | 20 MB |
+| Max. Stats im Schema | 5.000 |
+| Max. Achievements im Schema | 10.000 |
+| Max. User-Stats zu verarbeiten | 5.000 |
+| Max. Bits pro Stat | 1.000 |
+| Max. Kinder pro Achievement | 100 |
 | Bots pro Zyklus | 100 |
 | Apps pro Bot und Zyklus | 40 |
 | Achievements pro Bot-Zyklus | 2.000 |
+| Achievements pro AppID und Zyklus | 200 |
+| Individuelle Retries pro App | 20 |
+| Circuit-Breaker (App-Fehler) | 3 |
+| Circuit-Breaker (Bot-Fehler) | 3 |
+| Schema-Cache (Einträge) | 2.500 |
+| Globaler Skip-Cache (Einträge) | 25.000 |
+| Persistente Skips (Einträge) | 10.000 |
+| Skip-Dateigröße | 1 MB |
+| Session-Cache (Einträge) | 1.000.000 |
 | Globaler Cooldown bei Rate-Limit | 30 Min. |
-| Befehls-Cooldown | 5 s (Owner/Konsole ausgenommen) |
+| Befehls-Cooldown | 5 s (Owner/Konsole/lokal ausgenommen) |
+| Semaphore-Timeout | 90 Min. |
+| Maximale Antwortlänge (Gesamt) | 1.600 Zeichen |
+| Maximale Statistik-Liste | 1.500 Zeichen |
+| Maximale App-Status-Liste | 400 Zeichen |
+| Maximale Multi-Bot-Zusammenfassung | 600 Zeichen |
+| Maximale Zusammenfassungs-Länge | 512 Zeichen |
+| Maximale Individual-Status-Liste | 500 Zeichen |
 
 ## Fehlerbehebung
 
 | Symptom | Was tun |
 |---------|---------|
-| Kein Plugin-Update / `PluginUpdateNoAssetFound` | Release auf [ASF-Archivements-pub](https://github.com/Teufel0406/ASF-Archivements-pub) prüfen: Tag neuer als installierte Version, Asset `AchievementAutomator.zip`, `PluginsUpdateMode` ≥ 1, ASF neu starten |
+| Kein Plugin-Update / `PluginUpdateNoAssetFound` | Release auf [ASF-Archivements-pub](https://github.com/Teufel0406/ASF-Archivements-pub) prüfen: Tag neuer als installierte Version, Asset `AchievementAutomator.zip`, `PluginsUpdateMode` >= 1, ASF neu starten |
 | Befehl wird abgelehnt | Master-Berechtigung nötig; aktuelle Plugin-Version verwenden |
-| Viele Apps werden übersprungen (`Fail`, `AccessDenied`, …) | Normal bei Spielen ohne User-Stats oder mit Zugriffsbeschränkung — Plugin cached diese Apps bis zum ASF-Neustart |
-| Unlock schlägt fehl (`InvalidParam`, …) | Schema-/Fortschrittsabhängigkeit — App wird übersprungen und gecacht |
-| `RateLimitExceeded` | 30 Min. globaler Cooldown für alle Bots — abwarten |
+| Viele Apps werden übersprungen (`Fail`, `AccessDenied`, ...) | Normal bei Spielen ohne User-Stats oder mit Zugriffsbeschränkung - Plugin cached diese Apps bis zum ASF-Neustart |
+| Unlock schlägt fehl (`InvalidParam`, ...) | Schema-/Fortschrittsabhängigkeit - App wird übersprungen und gecacht |
+| `RateLimitExceeded` | 30 Min. globaler Cooldown für alle Bots - abwarten |
 | `Timeout` | App wird im aktuellen Zyklus übersprungen, später erneut versucht |
 | Version unbekannt | `!achieve version` |
 
@@ -142,7 +165,7 @@ Weitere Logs: ASF-Log und Bot-Log nach `AchievementAutomator` durchsuchen.
 
 ## Sicherheit
 
-Sicherheitslücken bitte gemäß [SECURITY.md](SECURITY.md) melden — nicht als öffentliches Issue mit Exploit-Details.
+Sicherheitslücken bitte gemäß [SECURITY.md](SECURITY.md) melden - nicht als öffentliches Issue mit Exploit-Details.
 
 ## Lizenz & Haftung
 
