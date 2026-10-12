@@ -1,6 +1,6 @@
 # Security Policy - AchievementAutomator
 
-**Last updated:** 2026-09-07
+**Last updated:** 2026-09-26
 
 AchievementAutomator ist ein Plugin fuer [ArchiSteamFarm (ASF)](https://github.com/JustArchiNET/ArchiSteamFarm). Veroeffentlichte Builds (ZIP/DLL) stammen von [Teufel0406/ASF-Archivements-pub](https://github.com/Teufel0406/ASF-Archivements-pub).
 

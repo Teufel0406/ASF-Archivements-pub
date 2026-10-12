@@ -1,6 +1,6 @@
 # Achievement Automator Plugin for ASF
 
-**Version:** `1.1.13.0` * **Last updated:** 2026-09-12 * Benoetigt [.NET 10](https://dotnet.microsoft.com/) und eine aktuelle [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm)-Installation
+**Version:** `1.1.13.0` * **Last updated:** 2026-09-26 * Benoetigt [.NET 10](https://dotnet.microsoft.com/) und eine aktuelle [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm)-Installation
 
 Achievement Automator ist ein Plugin fuer [ArchiSteamFarm (ASF)](https://github.com/JustArchiNET/ArchiSteamFarm). Es prueft die Steam-Bibliothek konfigurierter Bots und schaltet fehlende Achievements automatisch frei - mit Drosselung und Limits, damit Steam-Anfragen im Rahmen bleiben.
 
